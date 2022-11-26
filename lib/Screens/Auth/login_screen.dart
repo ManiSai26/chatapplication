@@ -1,3 +1,4 @@
+import 'package:chatapplication/Screens/Auth/register_screen.dart';
 import 'package:chatapplication/Widgets/widgets.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -111,7 +112,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       TextSpan(
                         text: "Register here",
                         style: const TextStyle(color: Colors.black, fontSize: 14,decoration: TextDecoration.underline),
-                        recognizer: TapGestureRecognizer()..onTap = (){print("tapped");},
+                        recognizer: TapGestureRecognizer()..onTap = (){nextScreen(context, RegisterScreen());},
                       ),
                     ],
                   ),
