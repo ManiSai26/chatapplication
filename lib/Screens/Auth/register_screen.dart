@@ -182,10 +182,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     }),
                     nextScreenReplacement(context, HomeScreen())
                   }
-
                 else
                   {
-                    showSnackBar(context,Colors.red,value),
+                    showSnackBar(context, Colors.red, value),
                     setState(() {
                       _isLoading = false;
                     })

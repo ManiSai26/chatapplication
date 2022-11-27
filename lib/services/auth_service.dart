@@ -6,12 +6,26 @@ import 'package:flutter/material.dart';
 class AuthServices {
   final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
 
+  Future loginWithUsernameAndPassword( String email, String password) async{
+    try
+    {
+      User user = (await firebaseAuth.signInWithEmailAndPassword(email: email, password: password)).user!;
+      return true;
+    }on FirebaseAuthException catch (e)
+    {
+      print(e);
+
+      return e.message;
+    }
+
+  }
+
   Future registerUserWithEmailandPassword(
       String fullName, String email, String password) async{
     try
         {
           User user = (await firebaseAuth.createUserWithEmailAndPassword(email: email, password: password)).user!;
-          await DatabaseServices(uid: user.uid).updateUserData(fullName, email);
+          await DatabaseServices(uid: user.uid).saveUserData(fullName, email);
           return true;
         }on FirebaseAuthException catch (e)
     {
